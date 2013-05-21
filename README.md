@@ -1,44 +1,51 @@
-Extension provides a convenient interface for moving items between containers.
-After submit form with YiiMultiBox you can get state of changed list.
+Extension provides a convenient interface for moving items between containers.<br/>
+After submit form with YiiMultiBox you can get state of changed list.<br/>
 
-Creates a drag&drop multiboxes based on http://blog.tool-man.org/2005/04/15/drag-between-lists/12/
-Example with 2 lists - http://neb.net/playground/dragdrop/
+Creates a drag&drop multiboxes based on http://blog.tool-man.org/2005/04/15/drag-between-lists/12/<br/>
+Example with 2 lists - http://neb.net/playground/dragdrop/<br/>
+Description (Rus) - http://tyvik.blogspot.ru/2013/05/yii-yiimultibox.html
 
-Requirements
+Requirements:
+ - Yii 1.1 or more (Tested on 1.13)
 
-Yii 1.1 or more (Tested on 1.13)
-
-Usage
-
+Usage:<br/>
 Place yiimultibox folder in /protected/widget/. Add to form views as needed:
 
+```php
 $form->widget('application.widget.yiimultibox.YiiMultiBox', array(
     'form' => 'some-form',
     'boxes' => $someLists)
 );
+```
+
 where
  - form - some form for submit data (changed lists) to server;
  - boxes - array of list, eg:
-    array(
-        idList1 => array(
-            'header' => 'header of list 1' (optional, visible header for list),
-            'data' => array( (elements)
-                idElement1 => array(
-                    'name' => 'visible name',
-                    'class' => '' (optional keys),
-                    'style' => ''
-                    ... and other html attributes
-                ),
-            ),
-        )
-    )
 
-After submit form with YiiMultiBox you can get changed lists from $_POST['YiiMultiBox'], eg:
-    if (isset($_POST['YiiMultiBox'])) {
-        $lists = json_decode($_POST['YiiMultiBox']);
-        foreach ($lists as $idList => $values) {
-            foreach ($values as $elementOfList) {
-            // some process
-            }
+```php
+array(
+    idList1 => array(
+        'header' => 'header of list 1' (optional, visible header for list),
+        'data' => array( (elements)
+            idElement1 => array(
+                'name' => 'visible name',
+                'class' => '' (optional keys),
+                'style' => ''
+                ... and other html attributes
+            ),
+        ),
+    )
+)
+```
+
+After submit form with YiiMultiBox you can get changed lists from $_POST['YiiMultiBox'], eg:<br/>
+```php
+if (isset($_POST['YiiMultiBox'])) {
+    $lists = json_decode($_POST['YiiMultiBox']);
+    foreach ($lists as $idList => $values) {
+        foreach ($values as $elementOfList) {
+        // some process
         }
     }
+}
+```
