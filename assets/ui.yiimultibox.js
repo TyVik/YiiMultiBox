@@ -3,7 +3,7 @@ function makeDraggable() {
     for (var i = 0; i < list.length; i++) {
         DragDrop.makeListContainer(list[i]);
         list[i].onDragOver = function() { this.style["background"] = "#EEF"; };
-        list[i].onDragOut = function() {this.style["background"] = "none"; };
+        list[i].onDragOut = function() {this.style["background"] = ""; };
     }
 }
 
