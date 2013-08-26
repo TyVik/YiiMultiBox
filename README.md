@@ -25,9 +25,7 @@ where
             'data' => array( (elements)
                 idElement1 => array(
                     'name' => 'visible name',
-                    'class' => '' (optional keys),
-                    'style' => ''
-                    ... and other html attributes
+                    'htmlOptions' => array( as Yii htmlOptions),
                 ),
             ),
         )
