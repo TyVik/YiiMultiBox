@@ -77,7 +77,7 @@ class YiiMultiBox extends CJuiWidget
 
             $elements = '';
             foreach ($box['data'] as $key => $value) {
-                htmlOptions = $value["htmlOptions"];
+                $htmlOptions = $value["htmlOptions"];
                 $content = $value['name'];
                 unset($value['name']);
                 $htmlOptions['id'] = $key;
