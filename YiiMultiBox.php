@@ -77,18 +77,20 @@ class YiiMultiBox extends CJuiWidget
 
             $elements = '';
             foreach ($box['data'] as $key => $value) {
-                $htmlOptions = $value["htmlOptions"];
+                $htmlOptions = (isset($value["htmlOptions"])) ? $value["htmlOptions"] : array();
                 $content = $value['name'];
                 unset($value['name']);
                 $htmlOptions['id'] = $key;
                 $elements .= CHtml::tag('li', $htmlOptions, $content, true);
             }
 
-            $htmlOptions = array_merge(array("class" => "", "id" =>$name), $box["htmlOptions"]);
+            $htmlOptions = array("class" => "", "id" =>$name);
+            if (isset($box["htmlOptions"])) {
+                $htmlOptions = array_merge($htmlOptions, $box["htmlOptions"]);
+            }
             $htmlOptions["class"] .= " sortable boxy";
             echo CHtml::tag('ul', $htmlOptions, $header.$elements, true);
         }
-
         echo CHtml::hiddenField("YiiMultiBox", "", array('id' => "YiiMultiBox"));
 
         Yii::app()->clientScript->registerScript(
