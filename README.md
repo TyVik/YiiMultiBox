@@ -24,14 +24,17 @@ where
 
 ```php
 array(
-    idList1 => array(
-        'header' => 'header of list 1' (optional, visible header for list),
-        'data' => array( (elements)
-            idElement1 => array(
+    idContainers => array(
+        // optional, visible header for list
+        'header' => 'header of list 1',
+        'data' => array( 
+            // elements
+            idElements => array(
                 'name' => 'visible name',
-                    'htmlOptions' => array( as Yii htmlOptions),
+                'htmlOptions' => array( as Yii htmlOptions), // optional
             ),
         ),
+        'htmlOptions' => array( as Yii htmlOptions), // optional
     )
 )
 ```
@@ -40,8 +43,8 @@ After submit form with YiiMultiBox you can get changed lists from $_POST['YiiMul
 ```php
 if (isset($_POST['YiiMultiBox'])) {
     $lists = json_decode($_POST['YiiMultiBox']);
-    foreach ($lists as $idList => $values) {
-        foreach ($values as $elementOfList) {
+    foreach ($lists as $idContainers => $values) {
+        foreach ($values as $idElements) {
         // some process
         }
     }
